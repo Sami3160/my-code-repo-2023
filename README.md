@@ -1,4 +1,4 @@
-# my-tutorial-code-repo-2023# Code Samples Repository
+# Code Samples Repository
 
 Welcome to my Code Samples Repository! 🚀
 
