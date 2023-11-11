@@ -29,8 +29,4 @@ If you'd like to contribute to this repository:
 
 Your contributions are highly appreciated! Let's make this repository a valuable resource for the community.
 
-## License
-
-This repository is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 Happy coding! 🚀
