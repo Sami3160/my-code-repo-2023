@@ -16,4 +16,21 @@ The repository is organized by language, making it easy to find examples in your
 - [Java](java/)
 - [...and more to come!]
 
+## How to Contribute
 
+If you'd like to contribute to this repository:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/add-new-program`).
+3. Add your program to the appropriate language directory.
+4. Commit your changes (`git commit -m 'Add new program'`).
+5. Push to the branch (`git push origin feature/add-new-program`).
+6. Open a pull request.
+
+Your contributions are highly appreciated! Let's make this repository a valuable resource for the community.
+
+## License
+
+This repository is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+Happy coding! 🚀
