@@ -14,7 +14,7 @@ The repository is organized by language, making it easy to find examples in your
 - [Python](python/)
 - [JavaScript](javascript/)
 - [Java](java/)
-- [Data Structure](java/)
+- [Data Structure](dsa/)
 - [...and more to come!]
 
 ## How to Contribute
