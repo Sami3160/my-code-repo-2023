@@ -1,9 +1,8 @@
 import javax.swing.*;
 import javax.swing.tree.*;
-
+//a jTree program showing two tree, one normal one, and another one(C drive) is in a panel (D drive)
 public class JTreeDemo
 {
-int samiii;
     public static void main(String[] args) 
 {
 	JPanel p1=new JPanel();
