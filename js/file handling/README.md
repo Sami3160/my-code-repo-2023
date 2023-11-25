@@ -2,7 +2,7 @@
 
 This folder contains JavaScript programs for file handling.
 
-## Running the `fileOpen.js` Program
+## Running the `fileOpen.js` Program. 
 
 To run the `fileOpen.js` and other programs, use the following command:
 
