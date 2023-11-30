@@ -8,3 +8,16 @@ function simulateAsyncOperation() {
     });
   }
 console.log(simulateAsyncOperation())
+// Function that uses await to wait for the asynchronous operation
+async function performAsyncTask() {
+    console.log("Start of the async task");
+  
+    // Using await to wait for the completion of the asynchronous operation
+    const result = await simulateAsyncOperation();
+  
+    // This will only execute after the asynchronous operation is complete
+    console.log(result);
+  
+    console.log("End of the async task");
+  }
+  
