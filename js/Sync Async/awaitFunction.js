@@ -21,3 +21,5 @@ async function performAsyncTask() {
     console.log("End of the async task");
   }
   
+  // Call the async function
+  performAsyncTask();
