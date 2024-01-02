@@ -46,7 +46,7 @@ function getFriends(user,callback){
 }
 
 function display(user){
-    setInterval(()=>{
+    setTimeout(()=>{
         console.table(user)
     },1000)
 }
