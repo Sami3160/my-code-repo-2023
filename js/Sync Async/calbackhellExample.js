@@ -1,10 +1,21 @@
 //the async, await, promises are used to avoid the callback hell, because just make code 'look', 'maintain' ugly
 
-//below is example of callback hell
+//below is how callback hell(pyramid of doom) looks
+getUser((user)=>{
+    getAddress(user,()=>{
+        getRole(user,()=>{
+            getFriends(user,()=>{
+                display(user)
+            })
+        })
+    })
+})
 
+
+//defining aome asyncronus functions
 function getUser(callback){
     setTimeout(()=>{
-        let user={id:1, name:"samiii"}
+        let user={id:68, name:"samiii"}
         console.log('getUser() called')
         callback(user)
     },1000)
@@ -23,5 +34,19 @@ function getRole(user,callback){
         user.role="Scout"
         console.log("getRole() called")
         callback(user)
+    },1000)
+}
+
+function getFriends(user,callback){
+    setTimeout(()=>{
+        user.friendsCount=2
+        console.log("getFriends() called")
+        callback(user)
+    },1000)
+}
+
+function display(user){
+    setInterval(()=>{
+        console.table(user)
     },1000)
 }
