@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+  <title>Debounce Demonstration</title>
+</head>
+<body>
+
+<button id="debounceButton">Click Me (Debounced)</button>
+
+<script>
+  // Debounce function to limit the rate of function calls
+  function debounce(func, delay) {
+    let timeoutId;
+    return function() {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        func.apply(this, arguments);
+      }, delay);
+    };
+  }
+
+  // Function to be executed on button click (replace with your desired functionality)
+  function handleClick() {
+    console.log('Button clicked! (Debounced)');
+    // Replace this with your actual logic or function
+  }
+
+  // Attach the debounced function to the button click event
+  const debouncedClick = debounce(handleClick, 1000); // Adjust delay as needed
+  document.getElementById('debounceButton').addEventListener('click', debouncedClick);
+</script>
+
+</body>
+</html>
