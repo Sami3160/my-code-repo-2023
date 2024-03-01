@@ -1,11 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.awt.event.*;
+import java.io.*;
+import java.net.*;
 
 public class ServerWindow extends JFrame {
     private JTextArea messageArea;
@@ -18,7 +15,9 @@ public class ServerWindow extends JFrame {
     private DataInputStream din =null;
     public ServerWindow() {
         try {
-            ServerSocket ss = new ServerSocket(5000);
+            InetAddress hostip=InetAddress.getByName("0.0.0.0");
+            ServerSocket ss = new ServerSocket(5000, 0 ,hostip);
+            
 
             // ImageIcon ico=createImage
             ImageIcon iconOn = new ImageIcon("online.png");
@@ -39,9 +38,10 @@ public class ServerWindow extends JFrame {
 
             JButton find=new JButton(findImg);
             JLabel img = new JLabel(notCon);
+            img.setToolTipText("Disconnected");
             setTitle("Server Chat");
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            setSize(400, 300);
+            setSize(700, 400);
             setLayout(new BorderLayout());
 
             messageArea = new JTextArea();
@@ -67,7 +67,7 @@ public class ServerWindow extends JFrame {
                 public void run(){
                     try {
                         while (true) {
-                            Thread.sleep(1000);
+                            Thread.sleep(500);
                             if(s!=null){
                                 System.out.println("s is not null");
                                 if(s.isConnected()){
@@ -89,7 +89,8 @@ public class ServerWindow extends JFrame {
                     try {
                         if(s!=null){
                             if(s.isConnected()){
-                                dout.writeUTF("exit");
+                                // dout.writeUTF("exitDa");
+                                dout.writeUTF("eExItThEsYsTeM");
                                 s.close();
                                 img.setIcon(notCon);
                                 img.setToolTipText("Disconnected");
@@ -114,6 +115,28 @@ public class ServerWindow extends JFrame {
                     }
                 }
             });
+            messageField.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    try {
+                        
+                        String message = messageField.getText();
+                        if (!message.isEmpty()) {
+                            if (s!=null) {
+                                dout.writeUTF(message);
+                                addMessage("Server: " + message);
+                            }else{
+                                addMessage("Server: Client is not connected!!!");
+                                addMessage("Server: " + message);
+                            }
+                                messageField.setText("");
+                        }
+                    } catch (Exception ex) {
+                        System.err.println(ex);
+                    }
+                }
+            });
+            
             sendButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -135,6 +158,7 @@ public class ServerWindow extends JFrame {
                     }
                 }
             });
+            
 
 
             inputPanel.add(sendButton, BorderLayout.EAST);
