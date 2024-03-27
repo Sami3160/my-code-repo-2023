@@ -27,44 +27,72 @@ public class hamming {
             r++;
         }
         int[] newData = new int[(r + m)];
-        int r2 = 0;
-        while ((int) Math.pow(2, r2) < (m + r + 1)) {
-            newData[(int) (Math.pow(2, r2) - 1)] = -1;
-            r2++;
-        }
-        int j = 0;
+
+        //adding spaces for pi bits
+        int j = 0, k = 0;
         for (int i = 0; i < newData.length; i++) {
-            if (newData[i] != -1) {
+            if (i+1 != (int) Math.pow(2, k) ) {
                 newData[i] = data[j];
                 j++;
+            } else {
+                k++;
+                // setting even pi bits
+                // int pi=0,l=0;
+                // for(int z=(int)Math.pow(2, k); z<newData.length; z+=(int)Math.pow(2, k)+1){
+                // l=z;
+                // while (l<=(int)Math.pow(2, k)) {
+                // pi=pi ^ newData[l];
+                // l++;
+                // }
+                // }
             }
         }
+
+        j = 0;
+        k = 0;
+        for (int i = 0; i < newData.length; i++) {
+            if (i+1 == (int) Math.pow(2, k)) {
+                // setting even pi bits
+                int pi = 0, l ;
+                for (int z = i; z < newData.length; z += (int) Math.pow(2, k) + 1) {
+                    l=i;
+                    System.out.println((z+1)+"\t"+i);
+                    while (l < (int) Math.pow(2, k)) {
+                        pi = pi ^ newData[l];
+                        l++;
+                    }
+                }
+                k++;
+                newData[i]=pi;
+            }
+        }
+
         // even parity
-        int[] pi = new int[r];
-        int temp = 0;
-        int res = 0;
-        for (int i = 0; i < r; i++) {
-            res = 0;
-            temp = i;
-            j = i + 1;
-            while (temp < newData.length) {
-                int k = 0;
-                while (k < j) {
-                    if (newData[temp] == -1)newData[temp] = 0;
-                    res = res ^ newData[temp];
-                    System.out.println(newData[temp]+"\t"+j);
-                    temp++;
-                    k++;
-                }
-                k = 0;
-                while (k < j) {
-                    temp++;
-                    k++;
-                }
-            }
-            // System.out.println(res);
-            newData[(int) Math.pow(2, i) - 1] = res;
-        }
+        // int[] pi = new int[r];
+        // int temp = 0;
+        // int res = 0;
+        // for (int i = 0; i < r; i++) {
+        // res = 0;
+        // temp = i;
+        // j = i + 1;
+        // while (temp < newData.length) {
+        // int k = 0;
+        // while (k < j) {
+        // if (newData[temp] == -1)newData[temp] = 0;
+        // res = res ^ newData[temp];
+        // System.out.println(newData[temp]+"\t"+j);
+        // temp++;
+        // k++;
+        // }
+        // k = 0;
+        // while (k < j) {
+        // temp++;
+        // k++;
+        // }
+        // }
+        // // System.out.println(res);
+        // newData[(int) Math.pow(2, i) - 1] = res;
+        // }
 
         // new even parity
         // int[] pi = new int[r];
