@@ -3,6 +3,7 @@ import java.awt.event.*;
 import java.io.*;
 import java.net.*;
 import javax.swing.*;
+import javax.swing.border.Border;
 
 public class MyClient extends JFrame {
     private JTextArea messageShowArea;
@@ -16,6 +17,7 @@ public class MyClient extends JFrame {
 
     public MyClient() {
 
+        Border border=BorderFactory.createLineBorder(new Color(0, 150, 255));
         ImageIcon iconOn = new ImageIcon("online.png");
         ImageIcon notCon = new ImageIcon("offline.png");
         Icon searchLoad = new ImageIcon(this.getClass().getResource("loop-loading.gif"));
@@ -55,15 +57,22 @@ public class MyClient extends JFrame {
 
             messageShowArea = new JTextArea();
             messageShowArea.setEditable(false);
-
+            messageShowArea.setBackground(new Color(115, 147, 179));
+            messageShowArea.setForeground(Color.WHITE);
+            messageShowArea.setBorder(border);
             send = new JButton("Send");
             JScrollPane scrollPane = new JScrollPane(messageShowArea);
 
             inputArea = new JTextField();
+            inputArea.setBorder(border);
+            inputArea.setBackground(new Color(137, 207, 240));
+
             inputArea.setPreferredSize(new Dimension(270, 50));
             inputArea.setFont(new Font("Areal", Font.PLAIN, 26));
+            inputArea.setForeground(Color.WHITE);
 
             inputPanel.add(inputArea, BorderLayout.CENTER);
+            inputPanel.setBorder(border);
             inputPanel.add(send, BorderLayout.EAST);
             add(status, BorderLayout.NORTH);
             add(scrollPane, BorderLayout.CENTER);
@@ -79,6 +88,7 @@ public class MyClient extends JFrame {
                             if (s != null) {
                                 if (s.isConnected()) {
                                     status.setIcon(iconOn);
+                                    status.setBackground(new Color(115, 147, 179));
                                     String newmsg = dis.readUTF();
                                     if (newmsg.equals("eExItThEsYsTeM")) {
                                         s.close();
