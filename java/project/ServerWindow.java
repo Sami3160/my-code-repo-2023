@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.border.Border;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -12,8 +14,10 @@ public class ServerWindow extends JFrame {
 
     private Socket s = null;
     private DataOutputStream dout =null;
+    
     private DataInputStream din =null;
     public ServerWindow() {
+        Border border=BorderFactory.createLineBorder(new Color(0, 150, 255));
         try {
             InetAddress hostip=InetAddress.getByName("0.0.0.0");
             ServerSocket ss = new ServerSocket(5000, 0 ,hostip);
@@ -38,6 +42,7 @@ public class ServerWindow extends JFrame {
 
             JButton find=new JButton(findImg);
             JLabel img = new JLabel(notCon);
+            img.setBackground(new Color(115, 147, 179));
             img.setToolTipText("Disconnected");
             setTitle("Server Chat");
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,14 +51,24 @@ public class ServerWindow extends JFrame {
 
             messageArea = new JTextArea();
             messageArea.setEditable(false);
+            messageArea.setBackground(new Color(115, 147, 179));
+            messageArea.setBorder(border);
+            messageArea.setForeground(Color.WHITE);
 
             JScrollPane scrollPane = new JScrollPane(messageArea);
             add(scrollPane, BorderLayout.CENTER);
 
             JPanel inputPanel = new JPanel();
             inputPanel.setLayout(new BorderLayout());
+            inputPanel.setBorder(border);
+            // inputPanel.setBackground(new Color(115, 147, 179));
 
             messageField = new JTextField();
+            messageArea.setBorder(border);
+
+            // messageArea.setBackground(new Color(115, 147, 179));
+            messageField.setBackground(new Color(137, 207, 240));
+            messageField.setForeground(Color.WHITE);
             messageField.setFont(new Font("Arial", Font.PLAIN, 26));
 
             inputPanel.add(messageField, BorderLayout.CENTER);
