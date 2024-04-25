@@ -129,7 +129,7 @@ public class MyClient extends JFrame {
                         if (s.isConnected()) {
                             String msg = inputArea.getText();
                             dout.writeUTF(msg);
-                            addMessage("Client: " + msg);
+                            addMessage("Server: " + msg);
                             inputArea.setText("");
                         } else {
                             addMessage("Client: Not connected to server yet");
