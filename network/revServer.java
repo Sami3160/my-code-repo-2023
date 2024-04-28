@@ -12,6 +12,7 @@ public class revServer {
             String str = "";
             while (true) {
                 str = din.readUTF();
+                System.out.println("Original string : " + str);
                 char ch[]=str.toCharArray();
                 
                 str="";
@@ -22,10 +23,9 @@ public class revServer {
                     ch[ch.length-i-1]=tmp;
                 }
                 str=new String(ch);
+                System.out.println("Reversed string : " + str);
                 dot.writeUTF(str);
             }
-            // ss.close();
-            // s.close();
         } catch (Exception e) {
             System.out.println(e);
         }
