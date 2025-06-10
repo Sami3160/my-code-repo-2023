@@ -1,0 +1,4 @@
+hello i am Sami B, Sami B 1, Sami B 2
+
+# sed -i.oeiginal 's/sami/Sami B/g' abc.txt
+used for transform and backup file with regex
