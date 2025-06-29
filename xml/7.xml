@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="7.xsl"?>
+<company>
+  <employee id="e1">
+    <name>John</name>
+    <department>HR</department>
+  </employee>
+  <employee id="e2">
+    <name>Jane</name>
+    <department>IT</department>
+  </employee>
+  <employee id="e3">
+    <name>Max</name>
+    <department>Finance</department>
+  </employee>
+</company>
