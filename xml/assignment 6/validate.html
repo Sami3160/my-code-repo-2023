@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" onsubmit="handleSubmit">
+        <p id="message"></p>
+        <input type="text" name="fname" id="fname" placeholder="First name">
+        <br>
+        <input type="text" name="lname" id="lname" placeholder="Last name">
+        <br>
+        
+        <input type="text" name="contact" id="contact" placeholder="Contact"">
+        <br>
+        <input type="text" name="email" id="email" placeholder="Email">
+        <br>
+        <input type="text" name="password" id="password" placeholder="Password">
+        <br>
+        <input type="submit" value="submit">
+    </form>
+
+    <script>
+        const handleSubmit=(e)=>{
+            // e.();
+            e.preventDefault();
+            const fname=document.getElementById("fname").value;
+            const lname=document.getElementById("lname").value;
+            const contact=document.getElementById("contact").value;
+            const email=document.getElementById("email").value;
+            const password=document.getElementById("password").value;
+            const message=document.getElementById('message')
+            // console.log(fname,lname,contact,email,password);
+            if(!fname || !lname || !contact || !email || !password){
+                message.innerText="Need to fill all fields";
+                setTimeout(()=>message.innerText='',4000)
+                alert("error")
+                // message.innerText="Need to fill all fields";
+            }
+            else if(!/^[a-zA-Z]+$/.test(fname) || !/^[a-zA-Z]+$/.test(lname)){
+                message.innerText="Name should only contain alphabets";
+                setTimeout(()=>message.innerText='',4000)
+            }
+            else if(!/^\d{10}$/.test(contact)){
+                message.innerText="Contact should be 10 digits";
+                setTimeout(()=>message.innerText='',4000)
+            }
+            else if(!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)){
+                message.innerText="Invalid email format";
+                setTimeout(()=>message.innerText='',4000)
+            }
+            else if(!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{8,}$/.test(password)){
+                message.innerText="Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.";
+                setTimeout(()=>message.innerText='',4000)
+            }
+            else{
+                message.innerText="Form submitted successfully!";
+                setTimeout(()=>message.innerText='',4000)
+            }
+        }
+        // const form=document.querySelector('form');
+        // form.addEventListener('submit',handleSubmit)
+
+        
+    </script>
+</body>
+</html>
