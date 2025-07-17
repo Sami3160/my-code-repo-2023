@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="/home/samiii/Documents/mysql-connector-java-8.0.29.jar"/>
+	<classpathentry kind="lib" path="/home/samiii/Downloads/mariadb-java-client-3.1.1-sources.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
