@@ -1,0 +1,52 @@
+create new projejct
+
+select Other
+
+select maven project
+
+next
+requires internet
+next
+
+in catalog select Internal
+maven-archtype-quickstart 1.1
+click next
+
+next appears form
+Group id : com.dy (eg org name)
+Artifact name: demoName (eg project name)
+Package: com.dy (can change if default one is big)
+hit finish 
+
+
+note: here in left side we have pom.xml to insert dependencies
+
+in browsen serch maven repositories
+
+search sprnig core
+
+go to one with less version and some id is also supposed to be same eg (6.2.1 recommeded, its stable)
+now copy xml dependency code
+paste in pem.xml
+
+now search sspring context
+also have spring context adn spring core of same version
+copy/paste that dependency into <sependencies> tag
+
+
+
+create new class file from right click on src folder
+
+ src main rightclick -> new -> other-> search xml
+ 
+ name as config.xml 
+ 
+ 
+ 
+ task: create a maven project
+ add deps spring core and spring context
+ create User.java class with userId and userName with mojo
+ 
+ create AppConfig.java
+
+
