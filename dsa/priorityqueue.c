@@ -1,63 +1,55 @@
-#include<stdio.h>
-#include<stdlib.h>
-struct Node
-{
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
     int data;
     int priority;
-    struct Node* next; 
+    struct Node* next;
 };
 
-struct priorityQueue{
+struct PriorityQueue {
     struct Node* front;
 };
 
-struct Node* createNode(int data,int priority ){
-    struct Node* newNode=(struct Node*)malloc(sizeof(struct Node));
-    newNode->data=data;
-    newNode->priority=priority;
-    newNode->next=NULL;
+// Function to create a new node
+struct Node* createNode(int data, int priority) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->priority = priority;
+    newNode->next = NULL;
     return newNode;
+}
 
-};
+// Function to insert an element into the priority queue
+void insert(struct PriorityQueue* pq, int data, int priority) {
+    struct Node* newNode = createNode(data, priority);
 
-void insertItem(struct priorityQueue* pq,int data,int priority){
-    struct Node* newNode=createNode(data,priority);
-    if(pq->front==NULL || priority>pq->front->priority){
-        newNode->next=pq->front;
-        pq->front=newNode;
-    }else{
-        struct Node* ptr=pq->front;
-        while (ptr->next!=NULL && priority<=ptr->priority)
-        {
-            ptr=ptr->next;
+    if (pq->front == NULL || priority > pq->front->priority) {
+        newNode->next = pq->front;
+        pq->front = newNode;
+    } else {
+        struct Node* current = pq->front;
+        while (current->next != NULL && priority <= current->next->priority) {
+            current = current->next;
         }
-        newNode->next=ptr->next;
-        ptr->next=newNode;
+        newNode->next = current->next;
+        current->next = newNode;
     }
 }
-void extract(struct priorityQueue* pq){
-    struct Node* node=pq->front;
-    if(pq->front==NULL){
-        printf("\nQueue is empty");
-        return;
+
+// Function to extract the element with the highest priority
+int extractMax(struct PriorityQueue* pq) {
+    if (pq->front == NULL) {
+        printf("Priority Queue is empty\n");
+        return -1;
     }
-    pq->front=node->next;
-    free(node);
+
+    int data = pq->front->data;
+    struct Node* temp = pq->front;
+    pq->front = pq->front->next;
+    free(temp);
+
+    return data;
 }
-void display(struct priorityQueue* pq){
-    struct Node* ptr=pq->front;
-    while (ptr!=NULL)
-    {
-        printf("%d | ",ptr->data);
-        ptr=ptr->next;
-    }
-    
-}
-void main(){
-    struct priorityQueue pq={NULL};
-    insertItem(&pq,20,5);  
-    insertItem(&pq,10,3);   
-    insertItem(&pq,90,10);   
-    extract(&pq);
-    display(&pq);
-}
+
+// Function to print the elements of the priority
